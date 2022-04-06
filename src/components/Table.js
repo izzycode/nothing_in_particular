@@ -10,14 +10,14 @@ export default function Table(rows) {
     const [filteredRows, setFilteredRows] = useState([]);
     const [severityInput, setSeverityInput] = useState('');
 
-    /* 
-        By clicking on the button called Show Details, it utilizes RuxModal to show the detail. 
-        Please go to references: RuxModal, detail, setDetail, onDetail, contactSatellite, contactDetail  
+    /*
+        By clicking on the button called Show Details, it utilizes RuxModal to show the detail.
+        Please go to references: RuxModal, detail, setDetail, onDetail, contactSatellite, contactDetail
     */
-    const [detail, setDetail] = useState([]);
+    const [detail, setDetail] = useState({});
 
-    /* 
-        view alerts by their severity as well 
+    /*
+        view alerts by their severity as well
         so that they can prioritize acknowledging the more severe alerts first.
         Please go to references: searchSeverity, setSeverityInput, filteredData, setFilteredRows, searchSeverity, onSeverity
     */
@@ -31,11 +31,11 @@ export default function Table(rows) {
         } else {
             setFilteredRows(newRows);
         }
-        setDetail({
-            isOpen: false,
-            modalTitle: '',
-            modalMessage: ''
-        });
+        // setDetail({
+        //     isOpen: false,
+        //     modalTitle: '',
+        //     modalMessage: ''
+        // });
     }
 
     return (
@@ -66,7 +66,7 @@ export default function Table(rows) {
                     )}
                 </RuxTableBody>
             </RuxTable>
-            <Modal data={detail} />
+            <Modal data={detail} setDetail={setDetail} />
         </>
     )
 }
